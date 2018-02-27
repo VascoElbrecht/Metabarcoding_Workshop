@@ -29,7 +29,7 @@ Cutadapt(forward="GGWACWGGWTGAACWGTWTAYCCYCC", # mlCOIintF
 reverse="TANACYTCNGGRTGNCCRAARAAYCA") # jgHCO, I (inosin) replaced with N
 
 # trim reads in different orrientation
-PEmerged <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP/B_U_merge_PE/_data", full.names=T)
+PEmerged <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP_empty/B_U_merge_PE/_data", full.names=T)
 
 Cutadapt(files= PEmerged, forward="TANACYTCNGGRTGNCCRAARAAYCA", # jgHCO, I (inosin) replaced with N
 reverse="GGWACWGGWTGAACWGTWTAYCCYCC") # mlCOIintF
@@ -69,7 +69,7 @@ U_cluster_otus(filter=0.01)
 file.rename("J_U_cluster_otus", "J_U_cluster_otus - 60k")
 
 #cluster OTUs (without subsetting)
-no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP/H_U_max_ee/_data", full.names=T)
+no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP_empty/H_U_max_ee/_data", full.names=T)
 
 U_cluster_otus(files= no_subset, filter=0.01)
 
@@ -95,6 +95,24 @@ for(i in 3:9){
 data2[,i] <- round(data2[,i]/colSum[i-2]*100, 4) #converte data into relative abundance
 }
 write.csv(data2, "K_U_cluster_otus/data_cleaned_rel.csv", row.names=F)
+
+
+
+
+# haplotyping
+# from merged data:
+no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP_empty/F_merge/_data", full.names=T)
+
+#Keep only sequences of 313 bp length
+Minmax(file=no_subset, min=313, max=313)
+
+# stricter EE filtering
+U_max_ee(max_ee=0.2)
+
+#rename files to fasta files (Will fix this in the future)
+file.rename(list.files("N_U_max_ee/_data", full.names=T), sub("txt", "fasta", list.files("N_U_max_ee/_data",  full.names=T)))
+
+Denoise(minsize=5, minrelsize=0.001, OTUmin=0.1, minHaploPresence=2)
 
 
 
