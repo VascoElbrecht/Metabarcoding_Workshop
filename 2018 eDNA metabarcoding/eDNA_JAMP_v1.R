@@ -30,9 +30,9 @@ Remove_last_folder() # this is yout "undo" function. Do not delete folders "rand
 data <- read.csv("SRA_list_v1.csv", stringsAsFactors=F)
 
 
-
 SRA(ID=data$SRA.accession.number, rename=data$JAMP_Name)
 
+# Quick read quality check!
 FastQC()
 
 
@@ -41,14 +41,14 @@ FastQC()
 U_merge_PE(fastq_pctid=75)
 
 # check for PhiX
-system2("usearch", "-usearch_global A_Demultiplexing_shifted/_data/N_debris_r1.txt -db PhiX.fasta -id 0.9 -strand both -blast6out PhiX_table.txt")
+#system2("usearch", "-usearch_global A_Demultiplexing_shifted/_data/N_debris_r1.txt -db PhiX.fasta -id 0.9 -strand both -blast6out PhiX_table.txt")
 
 
-
+# mlCOIintF+jgHCO2198
 # trimm primers
 Cutadapt(forward="GGWACWGGWTGAACWGTWTAYCCYCC", # mlCOIintF
-reverse="TANACYTCNGGRTGNCCRAARAAYCA", bothsides=T) # jgHCO, I (inosin) replaced with N
-#by using "bothsides=T", forward or reverse primers are detected on both ends. This is not nessesary for fusion primers.
+reverse="TAIACYTCIGGRTGICCRAARAAYCA", LDist=T) # jgHCO2198
+
 
 # discard with non target length
 Minmax(min=(313-10), max=(313+10))
@@ -57,22 +57,39 @@ Minmax(min=(313-10), max=(313+10))
 U_max_ee(max_ee=1)
 
 # subsample to lowest sample size, should be done if samples are widely different in sequencing depth (as one starts with)
-U_subset(sample_size=60000)
-
-
+#U_subset(sample_size=60000)
 
 
 #cluster OTUs
 U_cluster_otus(filter=0.01)
-file.rename("G_U_cluster_otus", "G_U_cluster_otus - 60k")
-
-#cluster OTUs (without subsetting)
-no_subset <- list.files("E_U_max_ee/_data", full.names=T)
-
-U_cluster_otus(files= no_subset, filter=0.01)
 
 # assign taxonomy to OTUs without sub setting! K_U_cluster_otus
 Bold_web_hack(file="K_bold_results.txt")
+
+
+
+
+# second primer set
+#cluster OTUs (without subsetting)
+Next_primer_set <- list.files("B_U_merge_PE/_data", full.names=T)
+
+Cutadapt(Next_primer_set, forward="GGTCAACAAATCATAAAGATATTGG", #LCO1490
+reverse="GGIGGRTAIACIGTTCAICC", LDist=T) # Ill_C_R
+
+Minmax(min=(325-10), max=(325+10))
+
+U_max_ee(max_ee=1)
+
+U_cluster_otus(filter=0.01)
+
+
+
+
+
+
+
+
+
 
 
 
