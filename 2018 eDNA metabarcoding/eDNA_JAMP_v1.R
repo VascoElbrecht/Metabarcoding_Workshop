@@ -103,6 +103,8 @@ U_cluster_otus(filter=0.01)
 
 
 # haplotyping
+
+list.files()
 # from merged data:
 no_subset <- list.files("D_Minmax/_data", full.names=T)
 
@@ -113,7 +115,7 @@ Minmax(file=no_subset, min=313, max=313)
 U_max_ee(max_ee=0.2)
 
 # Extracting haplotypes from the metabarcoding data
-Denoise(minsize=5, minrelsize=0.001, OTUmin=0.01, minHaploPresence=1)
+Denoise(minsize=5, minrelsize=0.001, OTUmin=0.1, minHaploPresence=1)
 
 
 
