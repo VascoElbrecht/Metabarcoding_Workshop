@@ -29,7 +29,9 @@ Remove_last_folder() # this is yout "undo" function. Do not delete folders "rand
 # let's read the SRA IDs!
 data <- read.csv("SRA_list_v1.csv", stringsAsFactors=F)
 
+head(data) #you can also use str(data)
 
+# Downloading sequences:
 SRA(ID=data$SRA.accession.number, rename=data$JAMP_Name)
 
 # Quick read quality check!
@@ -39,6 +41,10 @@ FastQC()
 
 # Paired end merging
 U_merge_PE(fastq_pctid=75)
+
+data <- read.csv("B_U_merge_PE/_stats/B_sequ_length_abund.csv", stringsAsFactors=F)
+
+data
 
 # check for PhiX
 #system2("usearch", "-usearch_global A_Demultiplexing_shifted/_data/N_debris_r1.txt -db PhiX.fasta -id 0.9 -strand both -blast6out PhiX_table.txt")
@@ -56,8 +62,10 @@ Minmax(min=(313-10), max=(313+10))
 # discard reads above 1 expected error
 U_max_ee(max_ee=1)
 
-# subsample to lowest sample size, should be done if samples are widely different in sequencing depth (as one starts with)
-#U_subset(sample_size=60000)
+# subsample to lowest sample size, should be done if samples are widely different in sequencing depth, but usually not needed
+
+U_subset(sample_size=25000) # will produce some errors because files contain less than 25000 sequences (would need to move negative controls over manually)
+Remove_last_folder()
 
 
 #cluster OTUs
@@ -70,23 +78,22 @@ Bold_web_hack(file="K_bold_results.txt")
 
 
 # second primer set
-#cluster OTUs (without subsetting)
 Next_primer_set <- list.files("B_U_merge_PE/_data", full.names=T)
 
 Cutadapt(Next_primer_set, forward="GGTCAACAAATCATAAAGATATTGG", #LCO1490
 reverse="GGIGGRTAIACIGTTCAICC", LDist=T) # Ill_C_R
+
+#renamefiles!
+names <- list.files("G_Cutadapt/_data", full.name=T)
+names2 <- sub("_data/", "-data/ill_", names)
+
+file.rename(names, names2)
 
 Minmax(min=(325-10), max=(325+10))
 
 U_max_ee(max_ee=1)
 
 U_cluster_otus(filter=0.01)
-
-
-
-
-
-
 
 
 
