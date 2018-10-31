@@ -85,7 +85,7 @@ reverse="GGIGGRTAIACIGTTCAICC", LDist=T) # Ill_C_R
 
 #renamefiles!
 names <- list.files("G_Cutadapt/_data", full.name=T)
-names2 <- sub("_data/", "-data/ill_", names)
+names2 <- sub("_data/", "_data/ill_", names)
 
 file.rename(names, names2)
 
