@@ -1,0 +1,136 @@
+setwd("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 Primer Validation/1 JAMP malaise")#
+list.files()#
+#
+library("JAMP") # v0.45
+Demultiplexing_shifted(file1="0 raw data/Vasco-Run3_S1_L001_R1_001.fastq.gz", file2="0 raw data/Vasco-Run3_S1_L001_R2_001.fastq.gz", tags="_demultiplexing_files/tags_v1.csv", combinations="_demultiplexing_files/combos_v1.csv")
+Demultiplexing_shifted(file1="0 raw data/Vasco-Run3_S1_L001_R1_001.fastq", file2="0 raw data/Vasco-Run3_S1_L001_R2_001.fastq", tags="_demultiplexing_files/tags_v1.csv", combinations="_demultiplexing_files/combos_v1.csv")
+setwd("/Volumes/Vasco_4TB/2018 JAMP malaise/")#
+list.files()#
+#
+library("JAMP") # v0.45
+U_merge_PE()
+# load primers!#
+combos <- read.csv("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 Primer Validation/1 Lab Work/1 PCR : lab/VE 9 - second step/data2_length_V2.csv", stringsAsFactors=F)#
+primers <- read.csv("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 Primer Validation/1 Lab Work/1 primer list/primer_list_v5.csv", stringsAsFactors=F)#
+primers <- primers[,c(1,5)]#
+#
+combos <- combos[-c(21,20),]
+primers$sequence <- gsub("I", "N", primers$sequence)#
+#
+# trimm primers#
+Cutadapt(forward=primers$sequence[match(combos$Forward, primers$Primer.name)],#
+reverse=primers$sequence[match(combos$Reverse, primers$Primer.name)])
+Cutadapt(forward=primers$sequence[match(combos$Forward, primers$Primer.name)],#
+reverse=primers$sequence[match(combos$Reverse, primers$Primer.name)])
+Remove_last_folder()
+Remove_last_folder()
+Cutadapt(forward=primers$sequence[match(combos$Forward, primers$Primer.name)],#
+reverse=primers$sequence[match(combos$Reverse, primers$Primer.name)])
+Cutadapt(forward=primers$sequence[match(combos$Forward, primers$Primer.name)],#
+reverse=primers$sequence[match(combos$Reverse, primers$Primer.name)])
+Remove_last_folder()
+U_revcomp(RC=c(F,T))
+# trimm primers#
+Cutadapt(forward=primers$sequence[match(combos$Forward, primers$Primer.name)],#
+reverse=primers$sequence[match(combos$Reverse, primers$Primer.name)])
+# discard with non target length#
+temp <- c(combos$region_size[c(-20, -21)], 269, 271) # 20, 21 added manually#
+#
+Minmax(min=(temp-10), max=(temp+10))#
+#
+# discard reads above 1 expected error#
+U_max_ee(max_ee=1)
+U_cluster_otus()
+setwd("~/Documents/GitHub/Metabarcoding_Workshop/mBRAVE")
+setwd("~/Documents/GitHub/Metabarcoding_Workshop/mBRAVE")
+files <- list.files(path = "tables",full.names=T)
+files <- list.files(path = "tables",full.names=T)
+files
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)
+g <- 1
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)
+data
+data <- read.csv(files[1], sep="\t", stringsAsFactors=F)
+data <- read.csv(files[1], sep="\t", stringsAsFactors=F)
+list <- read.csv(files[1], sep="\t", stringsAsFactors=F)
+g <- 2
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)
+files[g]
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)
+data
+list <- list[c(1,9)]
+list
+files
+sub(".*/.*\\.(.*)", "\\1", files)
+sub(".*/.*\\.(.*)\\..*\\..*", "\\1", files)
+ID <- sub(".*/.*\\.(.*)\\..*\\..*", "\\1", files)
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)
+list <- merge(list,data[c(1,9)],by.x="BIN.URI",by.y="BIN.URI",all=T)
+data
+data[c(1,9)]
+list <- merge(list,data[c(1,9)],by.x="BIN.Taxon.ID",by.y="BIN.Taxon.ID",all=T)
+list
+?merge
+list <- merge(list,data[c(1,9)],by.x="BIN.Taxon.ID",by.y="BIN.Taxon.ID",all=T, incomparables=0)
+list
+list <- merge(list,data[c(1,9)],by.x="BIN.Taxon.ID",by.y="BIN.Taxon.ID",all=T)
+list[is.na(list)] <- 0
+names(list)
+names(list) <- c("BIN", ID)
+ID <- sub(".*/.*\\.(.*)\\..*\\..*", "\\1", files)#
+#
+list <- read.csv(files[1], sep="\t", stringsAsFactors=F)#
+list <- list[c(1,9)]#
+for (g in 2:length(files)){#
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)#
+list <- merge(list,data[c(1,9)],by.x="BIN.Taxon.ID",by.y="BIN.Taxon.ID",all=T)#
+list[is.na(list)] <- 0#
+}#
+names(list) <- c("BIN", ID)
+list
+write.csv(list,file="merged.csv")
+library("BOLD")
+library("bold")
+??bold
+bold_tax_id(list$BIN)
+bold_tax_id(list$BIN[1])
+files <- list.files(path = "tables",full.names=T)#
+ID <- sub(".*/.*\\.(.*)\\..*\\..*", "\\1", files)#
+#
+list <- read.csv(files[1], sep="\t", stringsAsFactors=F)#
+list <- list[c(1,9)]
+list
+list
+list2 <- read.csv(files[1], sep="\t", stringsAsFactors=F)
+list <- list2[c(1,9)]
+list2
+list2 <- list2[1:8]
+ID <- sub(".*/.*\\.(.*)\\..*\\..*", "\\1", files)#
+#
+list2 <- read.csv(files[1], sep="\t", stringsAsFactors=F)#
+list <- list2[c(1,9)]#
+#
+list2 <- list2[1:8]#
+for (g in 2:length(files)){#
+data <- read.csv(files[g], sep="\t", stringsAsFactors=F)#
+list2 <- rbind(list2, data[1:8])#
+#
+list <- merge(list,data[c(1,9)],by.x="BIN.Taxon.ID",by.y="BIN.Taxon.ID",all=T)#
+list[is.na(list)] <- 0#
+}#
+names(list) <- c("BIN", ID)
+list2
+list2[duplicated(list2[1])]
+list2[duplicated(list2[1]),]
+list3 <- list2[!duplicated(list2[1]),]
+match(list3[1], list[1])
+list3[1]
+merge(list, list3, by="BIN.Taxon.ID")
+merge(list, list3, by.x="BIN.Taxon.ID", by.y="BIN.Taxon.ID")
+list
+merge(list, list3, by.x="BIN", by.y="BIN.Taxon.ID")
+list3 <- list2[!duplicated(list2[1]),]#
+#
+list4 <- merge(list, list3, by.x="BIN", by.y="BIN.Taxon.ID")#
+#
+write.csv(list4,file="merged.csv")

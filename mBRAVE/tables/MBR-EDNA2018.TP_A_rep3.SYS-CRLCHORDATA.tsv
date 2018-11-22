@@ -1,0 +1,6 @@
+BIN/Taxon ID	Phylum	Class	Order	Family	Subfamily	Genus	Species	Sequences	Dereplicates	PreClusters	Abundance Rank	Dereplication Reduction (%)	Preclustering Reduction (%)	Mean Similarity (%)	Mean Overlap	Mean ID Match Gaps	Length	GC Composition	MID
+BOLD:AAB4614	Chordata	Actinopterygii	Scorpaeniformes	Cottidae	Cottinae	Myoxocephalus	Myoxocephalus scorpioides	9	6	6	1	33.33	0.00	99.89	311.67	0	312	47.54	0
+BOLD:AAA0001	Chordata	Mammalia	Primates	Hominidae		Homo	Homo sapiens	2	2	2	2	0.00	0.00	99.52	312.5	0	312.5	50.08	0
+BOLD:AAA1542	Chordata	Mammalia	Carnivora	Canidae		Canis	Canis lupus	2	1	1	2	50.00	0.00	100	313	0	313	41.85	0
+BOLD:AAK5272	Chordata	Ascidiacea	Stolidobranchia	Pyuridae		Halocynthia	Halocynthia pyriformis	1	1	1	4	0.00	0.00	99.36	313	0	313	38.34	0
+BOLD:AAA7007	Chordata	Actinopterygii	Scorpaeniformes	Cottidae	Cottinae	Myoxocephalus, Porocottus	Porocottus camtschaticus, Myoxocephalus scorpius, Myoxocephalus scorpioides	1	1	1	4	0.00	0.00	99.68	312	0	312	47.76	0

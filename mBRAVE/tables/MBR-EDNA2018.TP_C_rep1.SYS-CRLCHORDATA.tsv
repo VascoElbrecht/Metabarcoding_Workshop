@@ -1,0 +1,9 @@
+BIN/Taxon ID	Phylum	Class	Order	Family	Subfamily	Genus	Species	Sequences	Dereplicates	PreClusters	Abundance Rank	Dereplication Reduction (%)	Preclustering Reduction (%)	Mean Similarity (%)	Mean Overlap	Mean ID Match Gaps	Length	GC Composition	MID
+BOLD:AAA0001	Chordata	Mammalia	Primates	Hominidae		Homo	Homo sapiens	60	29	29	1	51.67	0.00	99.66	312.72	0	312.72	50.24	0
+BOLD:AAD4806	Chordata	Mammalia	Cetacea	Monodontidae		Delphinapterus	Delphinapterus leucas	20	10	10	2	50.00	0.00	98.88	312.9	0	312.9	43.18	0
+BOLD:ACA5456	Chordata	Actinopterygii	Scorpaeniformes	Stichaeidae	Lumpeninae	Lumpenus, Leptoclinus	Leptoclinus maculatus, Lumpenus fabricii, Lumpenus sagitta	5	3	3	3	40.00	0.00	99.3	312.8	0	312.8	47.31	0
+BOLD:AAB2046	Chordata	Actinopterygii	Gadiformes	Gadidae	Lotinae	Lota	Lota lota	4	1	1	4	75.00	0.00	100	310	0	313	45.05	0
+BOLD:AAD2230	Chordata	Aves	Charadriiformes	Scolopacidae		Calidris	Calidris pusilla	3	1	1	5	66.67	0.00	100	313	0	313	48.88	0
+BOLD:AAE4367	Chordata	Mammalia	Rodentia	Castoridae		Castor	Castor canadensis	2	2	2	6	0.00	0.00	99.84	313	0	313	47.12	0
+BOLD:ACF5624	Chordata	Aves	Anseriformes	Anatidae		Branta	Branta sandvicensis, Branta canadensis	1	1	1	7	0.00	0.00	99.36	313	0	313	56.23	0
+BOLD:ACE7641	Chordata	Actinopterygii	Salmoniformes	Salmonidae	Coregoninae	Coregonus	Coregonus sardinella, Coregonus albula, Coregonus laurettae, Coregonus lucinensis, Coregonus sp., Coregonus peled, Coregonus zenithicus, Coregonus nigripinnis, Coregonus pollan, Coregonus artedi, Coregonus ladogae, Coregonus maraena, Coregonus autumnalis, Coregonus hoyi, Coregonus kiyi, Coregonus fontanae	1	1	1	7	0.00	0.00	100	310	0	313	47.6	0

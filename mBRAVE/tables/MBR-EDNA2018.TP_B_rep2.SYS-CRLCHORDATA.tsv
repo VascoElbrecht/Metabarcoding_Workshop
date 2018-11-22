@@ -1,0 +1,4 @@
+BIN/Taxon ID	Phylum	Class	Order	Family	Subfamily	Genus	Species	Sequences	Dereplicates	PreClusters	Abundance Rank	Dereplication Reduction (%)	Preclustering Reduction (%)	Mean Similarity (%)	Mean Overlap	Mean ID Match Gaps	Length	GC Composition	MID
+BOLD:AAA0001	Chordata	Mammalia	Primates	Hominidae		Homo	Homo sapiens	4	4	4	1	0.00	0.00	99.52	312	0	312	50.08	0
+BOLD:ACA5456	Chordata	Actinopterygii	Scorpaeniformes	Stichaeidae	Lumpeninae	Lumpenus, Leptoclinus	Leptoclinus maculatus, Lumpenus fabricii, Lumpenus sagitta	3	3	3	2	0.00	0.00	99.14	312	0	312	47.22	0
+BOLD:ACT1316	Chordata	Actinopterygii	Osmeriformes	Osmeridae		Mallotus	Mallotus villosus, Mallotus sp.	1	1	1	3	0.00	0.00	99.68	313	0	313	44.41	0
