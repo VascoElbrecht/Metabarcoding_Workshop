@@ -1,21 +1,19 @@
 # 190204 jamp pipeline
-setwd("~/Documents/UNI_und_VORLESUNGEN/GitHub/JAMP/")
-
-#install.packages(c("bold", "XML", "seqinr"), dependencies=T)
-#install.packages("JAMP", repos = NULL, type="source")
 
 
-library("JAMP") #v0.34
-library("bold")
-library("XML")
+# Connect to SSH
+sudo ssh -i /Users/luckylion/Documents/University/2018\ Guelph/1\ TEACHING/2019\ Metabarcoding/AWS/berlin2.pem ubuntu@34.220.161.153
 
 
+# change working directory
+cd 
 
-# base directory
-setwd("~/Documents/GitHub/Metabarcoding_Workshop/2019 Eukaryotic Metabarcoding")
+# list files 
+ls -l
 
+mkdir metabarcoding
 
-
+chmod 777 metabarcoding
 
 # Download the sequencing data
 wget https://ndownloader.figshare.com/files/6503952 -O 16_S10_L001_R1_001_run1.fastq.gz
@@ -33,12 +31,18 @@ wget https://raw.githubusercontent.com/VascoElbrecht/JAMP/master/Tutorial/_conve
 
 # look at PhiX
 # Upload PhiX.fasta - AWS -> FileZilla
+system2("usearch", "-usearch_global 16_S10_L001_R1_001_run1.fastq -db PhiX.fasta -id 0.9 -strand both -blast6out PhiX_table.txt")
+
 usearch -usearch_global 16_S10_L001_R1_001_run1.fastq -db PhiX.fasta -id 0.9 -strand both -blast6out PhiX_table.txt
 
 
 
 # Start processing with R
 sudo R
+
+
+# base directory
+setwd("~/Documents/GitHub/Metabarcoding_Workshop/2019 Eukaryotic Metabarcoding")
 
 
 # load JAMP
