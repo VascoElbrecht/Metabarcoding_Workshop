@@ -15,6 +15,8 @@ mkdir metabarcoding
 
 chmod 777 metabarcoding
 
+
+
 # Download the sequencing data
 wget https://ndownloader.figshare.com/files/6503952 -O 16_S10_L001_R1_001_run1.fastq.gz
 wget https://ndownloader.figshare.com/files/6503991 -O 16_S10_L001_R2_001_run1.fastq.gz
@@ -47,6 +49,15 @@ setwd("~/Documents/GitHub/Metabarcoding_Workshop/2019 Eukaryotic Metabarcoding")
 
 # load JAMP
 library("JAMP")
+
+
+
+#Create folders (to drop data into)
+Empty_folder()
+
+#Delete folders
+Remove_last_folder()
+
 
 
 # Demultiplex by sample
@@ -95,6 +106,12 @@ Bold_web_hack(file="K_BOLD_TAX.txt")
 
 
 # haplotyping
+
+# temporary fix, old version used!
+source("https://raw.githubusercontent.com/VascoElbrecht/JAMP/9d4404d5a31c8635a58cf8ffd7628869831dae8f/JAMP/R/Denoise.R")
+
+
+
 # from merged data:
 no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP_empty/F_merge/_data", full.names=T)
 
@@ -112,4 +129,6 @@ Denoise(minsize=5, minrelsize=0.001, OTUmin=0.1, minHaploPresence=2)
 
 
 
+# remove all intermediate data (do only run when doen with all processing)
+delete_data()
 
