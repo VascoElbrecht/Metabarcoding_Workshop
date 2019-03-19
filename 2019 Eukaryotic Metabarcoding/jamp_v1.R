@@ -2,7 +2,7 @@
 
 
 # Connect to SSH
-sudo ssh -i /Users/luckylion/Documents/University/2018\ Guelph/1\ TEACHING/2019\ Metabarcoding/AWS/berlin2.pem ubuntu@34.220.161.153
+sudo ssh -i /Users/luckylion/Documents/University/2018\ Guelph/1\ TEACHING/2019\ Metabarcoding/AWS/berlin2.pem ubuntu@54.200.151.185
 
 
 # change working directory
@@ -113,16 +113,21 @@ source("https://raw.githubusercontent.com/VascoElbrecht/JAMP/9d4404d5a31c8635a58
 
 
 # from merged data:
-no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2018 metabarcoding course/1 JAMP_empty/F_merge/_data", full.names=T)
+no_subset <- list.files("D_Minmax/_data", full.names=T)
+
+U_revcomp(files= no_subset, RC=T)
+#Remove_last_folder()
+
+
+U_truncate(trunclen=310)
 
 #Keep only sequences of 313 bp length
-Minmax(file=no_subset, min=313, max=313)
+#Minmax(min=310, max=310)
+
+U_revcomp(RC=T)
 
 # stricter EE filtering
 U_max_ee(max_ee=0.2)
-
-#rename files to fasta files (Will fix this in the future)
-file.rename(list.files("N_U_max_ee/_data", full.names=T), sub("txt", "fasta", list.files("N_U_max_ee/_data",  full.names=T)))
 
 # Denoising ESVs
 Denoise(minsize=5, minrelsize=0.001, OTUmin=0.1, minHaploPresence=2)
