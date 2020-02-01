@@ -74,7 +74,7 @@ FastQC(exe="/usr/local/bin/FastQC/fastqc")
 
 
 # Merge paired end reads
-U_merge_PE(fastq_pctid=75, LDist=T)
+U_merge_PE(fastq_pctid=75, LDist=T, exe="usearch")
 
 
 # trimm primers
@@ -95,7 +95,7 @@ U_subset(sample_size=60000)
 
 #cluster OTUs
 U_cluster_otus(filter=0.01)
-file.rename("J_U_cluster_otus", "J_U_cluster_otus - 60k")
+file.rename("G_U_cluster_otus", "G_U_cluster_otus - 60k")
 
 #cluster OTUs (without subsetting)
 no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2019 metabarcoding course/1 JAMP_empty/H_U_max_ee/_data", full.names=T)
