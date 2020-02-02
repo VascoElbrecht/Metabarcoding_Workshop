@@ -1,6 +1,9 @@
 # 190204 jamp pipeline
 
 
+setwd("~/Documents/University/2019 Bonn/physalia2020")
+
+
 # Connect to SSH
 sudo ssh -i ~/Documents/metaberlin.pem ubuntu@52.43.173.99
 
@@ -74,7 +77,7 @@ FastQC(exe="/usr/local/bin/FastQC/fastqc")
 
 
 # Merge paired end reads
-U_merge_PE(fastq_pctid=75, LDist=T, exe="usearch")
+Merge_PE(LDist=T, exe="usearch")
 
 
 # trimm primers
@@ -90,7 +93,7 @@ U_max_ee(max_ee=0.5)
 
 
 # subsample to lowest sample size, should be done if samples are widely different in sequencing depth (as one starts with)
-U_subset(sample_size=60000)
+U_subset(sample_size=50000)
 
 
 #cluster OTUs
@@ -98,7 +101,7 @@ U_cluster_otus(filter=0.01)
 file.rename("G_U_cluster_otus", "G_U_cluster_otus - 60k")
 
 #cluster OTUs (without subsetting)
-no_subset <- list.files("~/Documents/UNI_und_VORLESUNGEN/14 Guelph/1 TEACHING/2019 metabarcoding course/1 JAMP_empty/H_U_max_ee/_data", full.names=T)
+no_subset <- list.files("~/Documents/University/2019 Bonn/physalia2020/E_U_max_ee/_data", full.names=T)
 
 U_cluster_otus(files= no_subset, filter=0.01)
 
@@ -113,7 +116,7 @@ Bold_web_hack(file="K_BOLD_TAX.txt")
 # haplotyping
 
 # temporary fix, old version used!
-source("https://raw.githubusercontent.com/VascoElbrecht/JAMP/9d4404d5a31c8635a58cf8ffd7628869831dae8f/JAMP/R/Denoise.R")
+#source("https://raw.githubusercontent.com/VascoElbrecht/JAMP/9d4404d5a31c8635a58cf8ffd7628869831dae8f/JAMP/R/Denoise.R")
 
 
 
@@ -134,9 +137,14 @@ U_revcomp(RC=T)
 # stricter EE filtering
 U_max_ee(max_ee=0.2)
 
-# Denoising ESVs
-Denoise(minsize=5, minrelsize=0.001, OTUmin=0.1, minHaploPresence=2)
 
+ee <- list.files("L_U_max_ee/_data", full.names=T)
+
+
+# Denoising ESVs
+Denoise(files=ee, minsize=5, minrelsize=0.001, OTUmin=0.01, minHaploPresence=2, poolsample=F, renameSamples="(.*)_PE_RC_RC_cut.*")
+
+Remove_last_folder()
 
 
 # remove all intermediate data (do only run when doen with all processing)
