@@ -18,7 +18,7 @@ mkdir metabarcoding
 
 chmod 777 metabarcoding
 
-
+.libPaths("/usr/local/lib/R/site-library")
 
 # Download the sequencing data
 wget https://ndownloader.figshare.com/files/6503952 -O 16_S10_L001_R1_001_run1.fastq.gz
