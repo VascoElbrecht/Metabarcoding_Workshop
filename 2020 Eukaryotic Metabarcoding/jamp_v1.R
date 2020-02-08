@@ -71,6 +71,12 @@ Remove_last_folder()
 # Demultiplex by sample
 Demultiplexing_shifted(file1="16_S10_L001_R1_001_run1.fastq", file2="16_S10_L001_R2_001_run1.fastq", tags="indexe_1.csv", combinations="combos_1.csv")
 
+file1="16_S10_L001_R1_001_run1.fastq"
+file2="16_S10_L001_R2_001_run1.fastq"
+tags="indexe_1.csv"
+combinations="combos_1.csv"
+
+
 
 # Analyse sequence quality
 FastQC(exe="/usr/local/bin/FastQC/fastqc")
