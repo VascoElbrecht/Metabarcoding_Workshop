@@ -44,3 +44,8 @@ https://www.drive5.com/usearch/download.html
 
 
 
+
+copy locally from USB stick (vsearch, fastqc, usearch)
+sudo cp * /usr/local/bin/
+
+
