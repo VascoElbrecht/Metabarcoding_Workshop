@@ -8,6 +8,8 @@
 
 # R dependencies (XML and curl)
 
+
+sudo apt-get update
 sudo apt-get install libcurl14-openssl-dev
 sudo apt-get install libxml2-dev
 sudo apt-get install libssl-dev
