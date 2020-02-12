@@ -49,3 +49,9 @@ copy locally from USB stick (vsearch, fastqc, usearch)
 sudo cp * /usr/local/bin/
 
 
+
+cd /usr/local/bin
+chmod 777 filename
+
+
+
