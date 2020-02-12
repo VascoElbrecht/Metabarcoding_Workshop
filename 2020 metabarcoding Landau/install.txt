@@ -1,0 +1,46 @@
+
+
+
+
+
+# R packages PrimerMiner und JAMP
+# https://github.com/VascoElbrecht/JAMP
+
+# R dependencies (XML and curl)
+
+sudo apt-get install libcurl14-openssl-dev
+sudo apt-get install libxml12-dev
+
+
+# Install within R
+# Installing dependencies needed for JAMP
+install.packages(c("bold", "XML", "seqinr", "devtools", "fastqcr"), dependencies=T)
+# Load devtools and install package directly from GitHub
+library("devtools")
+install_github("VascoElbrecht/PrimerMiner", subdir="PrimerMiner")
+install_github("VascoElbrecht/JAMP", subdir="JAMP")
+
+
+# cutadapt
+# https://cutadapt.readthedocs.io/en/stable/installation.html
+pip3 install --user --upgrade cutadapt
+
+
+
+# fastqc
+https://www.bioinformatics.babraham.ac.uk/projects/download.html#fastqc
+
+sudo cp * /usr/local/bin/ -r
+
+
+# Vsearch
+https://github.com/torognes/vsearch/releases
+
+# Usearch
+https://www.drive5.com/usearch/download.html
+
+
+
+
+
+
