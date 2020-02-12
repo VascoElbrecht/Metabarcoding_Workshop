@@ -10,7 +10,7 @@
 
 sudo apt-get install libcurl14-openssl-dev
 sudo apt-get install libxml12-dev
-
+sudo apt-get install libssl-dev
 
 # Install within R
 # Installing dependencies needed for JAMP
