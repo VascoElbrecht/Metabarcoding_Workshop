@@ -70,7 +70,7 @@ system2("wget", "https://sra-pub-src-1.s3.amazonaws.com/SRR9226470/Sa01_91_BR21_
 
 
 # Analyse sequence quality
-FastQC(exe="/usr/local/bin/fastqc/")
+FastQC(exe="/usr/local/bin/fastqc")
 
 
 
